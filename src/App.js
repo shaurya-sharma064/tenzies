@@ -1,11 +1,16 @@
 import React from "react"
 import Die from "./components/Die"
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
+import Clock from "./images/clock.png"
 
 function App(){
 
     const [dice,setDice]=React.useState(allRoller())
     const [tenzies,setTenzies]=React.useState(false)
+    const [timer,setTimer]=React.useState(0)
+
+    React.useEffect(()=>setTimeout(()=>setTimer(prevTimer=>prevTimer+1),1000),[timer])
 
     React.useEffect(()=>{
         const isHeld=dice.every(die=>die.isHeld)
@@ -13,7 +18,6 @@ function App(){
         const isSame=dice.every(die=>die.value===val)
         if(isSame && isHeld){
             setTenzies(true)
-            alert("Wooohooo")
         }
     },[dice])
 
@@ -52,11 +56,16 @@ function App(){
     return (
         <div>
             <main>
+                {tenzies && <Confetti />}
+                
+                <h1 id="heading">Tenzies {timer}</h1>
+                <p id="para">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
                 <div className="dieHolder">
                     {tenDice()}
                 </div>
-                <button onClick={tenzies?()=>{setDice(allRoller)
-                    setTenzies(false)}:notHeldRoller}>{tenzies?"New Game":"Click Here"}</button>
+                <button className="btn" onClick={tenzies?()=>{setDice(allRoller)
+                    setTenzies(false)
+                    }:notHeldRoller}>{tenzies?"New Game":"Click Here"}</button>
             </main>
         </div>
     )

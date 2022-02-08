@@ -1,7 +1,7 @@
 
 export default function Die(props){
     const styler={
-        backgroundColor:props.isHeld?"red":"yellow"
+        backgroundColor:props.isHeld?"#0088DD":"#fff"
     }
 
     return(
