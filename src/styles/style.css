@@ -1,0 +1,22 @@
+body{
+    background: #0B2434;
+}
+
+main{
+    width:700px;
+    height: 700px;
+    background: #fff;
+}
+
+.die{
+    height:80px;
+    width:80px;
+    border-style: solid;
+    font-size: 2rem;;
+}
+
+.dieHolder{
+    display:grid;
+    grid-gap: 0.5rem;
+    grid: 1fr 1fr/ 1fr 1fr 1fr 1fr 1fr
+}
