@@ -20,13 +20,13 @@ main{
 }
 
 #heading{
-    margin-top:7%;
-    margin-bottom: 4%;
+    margin-top:1%;
+    margin-bottom: 3%;
     font-size: 3em;
 }
 
 #para{
-    margin-bottom: 10%;
+    margin-bottom: 1%;
     text-align: center;
     font-size: 1.5em;
     max-width: 80%;
@@ -43,6 +43,12 @@ main{
     border-style: solid;
     font-size: 2rem;
     border-radius:0.5em;
+
+}
+
+
+.die img{
+    max-width:2em;
 }
 
 
@@ -53,17 +59,105 @@ main{
     align-items:center;
 }
 
-@media only screen and (max-width: 700px) {
-    .dieHolder{
-        display:grid;
-        grid-gap: 0.8rem;
-        grid:  1fr /  1fr 1fr;
-        justify-items:center;
-    }
-    main{
-        height:100%;
-    }
+#timer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border-style:groove;
+    border-radius:1em;
+    margin-left:0.3em;
+}
+
+#heading--timer{
+    font-size: 1.4em;
+}
+
+
+
+#currentTimer{
+    font-size:1.3em;
+}
+
+#logo--timer{
+    max-width: 5em;
+}
+
+#options{
+    display:flex;
+    margin-left:auto;
+    margin-top:2%;
+    justify-content: end;
+    align-items: center;
+    
+}
+
+#rolls{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border-style:groove;
+    border-radius:1em;
+    margin-right:0.3em;
+}
+
+#img-leaderboard{
+    max-width: 2em;
+    margin-right:1em;
+
+}
+
+#img-back{
+    max-width: 2em;
+    margin-right:1em;
+}
+
+#img-reset{
+    max-width:2em;
+    margin-right:1em;
+}
+
+#heading--rolls{
+    font-size: 1.4em;
+}
+
+#logo--roll{
+    max-width: 5em;
+}
+
+#currentScore{
+    font-size:1.3em;
+}
+
+#scores{
+    display:flex;
+    margin:2%;
+}
+
+ 
+tr{
+    width: 100%;
+}
+table, th, td {
+    width: 80%;
+    word-wrap: "break-word";
+    table-layout:fixed;
+    padding:0.2em 1em;
+    border-bottom: 1px groove black;
+    border-collapse: collapse;
+    text-align: left;
+    overflow-wrap:break-word 
   }
+
+
+table thead{
+    font-size: 1.6em;
+}
+
+table tbody{
+    font-size: 1.3em;
+}
+
+
 .btn{
     background-color: #475dc0; 
     border: none;
@@ -78,3 +172,33 @@ main{
     border-radius:0.5em;
     cursor: pointer;
 }
+
+
+@media only screen and (max-width: 700px) {
+    .dieHolder{
+        display:grid;
+        grid-gap: 0.8rem;
+        grid:  1fr /  1fr 1fr;
+        justify-items:center;
+    }
+    main{
+        min-height: 100vh;
+        height:100%;
+        width:100%;
+    }
+    table{
+        width: 100%;
+        white-space:nowrap;
+    }
+
+    
+    table thead{
+        font-size: 1.2em;
+    }
+
+    table tbody{
+        font-size: 0.9em;
+    }
+    
+  }
+
