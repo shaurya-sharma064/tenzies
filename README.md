@@ -8,6 +8,9 @@ Tenzies is a simple board game where the only way to win is to roll the dice unt
 4) Try to achieve this in as low of a time and rolls as possible.
 5) Enjoy :D
 
+## Live Link:
+https://wonderful-raman-f7fb8e.netlify.app/
+
 ## Screenshots:
 ### Main Game 
 ![](screenshots/MainGame.png)
