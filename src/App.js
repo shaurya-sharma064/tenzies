@@ -10,6 +10,7 @@ import Back from "./images/back.png"
 
 function App(){
 
+    //All the states
     const [dice,setDice]=React.useState(allRoller())
     const [tenzies,setTenzies]=React.useState(false)
     const [timer,setTimer]=React.useState(0)
@@ -18,12 +19,12 @@ function App(){
     const [topScore,setTopScore]=React.useState(()=>JSON.parse(localStorage.getItem("topScore"))|| [])
     const [staticTimer,setStaticTimer]=React.useState(0)
 
-    
+    //Increasing the timer by running the timeInterval function
     React.useEffect(()=>timeInterval(),[])
 
     
 
-
+    //Checks if Game has been won or not
     React.useEffect(()=>{
         const isHeld=dice.every(die=>die.isHeld)
         const val=dice[0].value
@@ -33,6 +34,7 @@ function App(){
         }
     },[dice])
 
+    //For Leaderboard
     React.useEffect(()=>{
         if(tenzies){
             setStaticTimer(timer)
@@ -61,10 +63,12 @@ function App(){
         }
     },[tenzies])
 
+    //Saving the leaderboard data in LocalStorage
     React.useEffect(()=>{
         localStorage.setItem("topScore",JSON.stringify(topScore))
     },[topScore])
 
+    //Forming the Leaderboard Table JSX
     function tableData(){
         let newArr=[]
         for(let i=0;i<topScore.length;i++){
@@ -86,7 +90,7 @@ function App(){
         return newArr
     }
 
-
+    //Rolls all the dice
     function allRoller(){
         let diceArr=[]
         for(let i=0;i<10;i++){
@@ -95,6 +99,7 @@ function App(){
         return diceArr
     }
 
+    //Rolls only those that are not held
     function notHeldRoller(){
         setRolls(prevRoll=>prevRoll+1)
         setDice((prevDice)=>{
@@ -103,11 +108,12 @@ function App(){
         setTenzies(false)
     }
     
-
+    //Time interval for increasing value of timer 
     function timeInterval(){
         setInterval(()=>setTimer(prevTimer=>prevTimer+1),1000)
     }
 
+    //Resets the game
     function resetGame(){
         setDice(allRoller)
         setTenzies(false)
@@ -118,14 +124,17 @@ function App(){
         
     }
 
+    //Rolls a single Die
     function singleRoller(){
         return Math.ceil(Math.random()*6)
     }
 
+    //Forms an Array of 10 Die components
     function tenDice(){
         return dice.map(die=><Die key={die.id} val={die.value} isHeld={die.isHeld} switcher={()=>{switcher(die.id)}}/>)
     }
 
+    //Switches the die from being held to not being held and vice versa
     function switcher(id){
         setDice((prevDice)=>{
             return prevDice.map(die=>die.id===id?{...die,isHeld:!die.isHeld}:die)

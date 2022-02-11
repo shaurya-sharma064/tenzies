@@ -6,10 +6,12 @@ import Five from "../images/five.png"
 import Six from "../images/six.png"
 
 export default function Die(props){
+    //Switches color based on if die is held or not
     const styler={
         backgroundColor:props.isHeld?"#0088DD":"#fff"
     }
     let value
+    //Switches between the 6 images
     switch(props.val){
         case 1:
             value=One
